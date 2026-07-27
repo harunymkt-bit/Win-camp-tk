@@ -1,0 +1,270 @@
+.admin-panel {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: white;
+}
+
+.admin-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.admin-header h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.admin-header p {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.admin-nav {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.2);
+  flex-wrap: wrap;
+}
+
+.admin-nav button {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.admin-nav button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.admin-nav button.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: transparent;
+  font-weight: bold;
+}
+
+.admin-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.tab-content h2 {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  color: #667eea;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: rgba(102, 126, 234, 0.15);
+  border: 2px solid rgba(102, 126, 234, 0.3);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  background: rgba(102, 126, 234, 0.25);
+  border-color: rgba(102, 126, 234, 0.8);
+  transform: translateY(-5px);
+}
+
+.stat-card h3 {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #667eea;
+  margin: 0;
+}
+
+.game-stats-section {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow-x: auto;
+}
+
+.game-stats-section h3 {
+  margin-bottom: 20px;
+  color: #667eea;
+}
+
+.stats-table, .games-table, .payments-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.stats-table th, .games-table th, .payments-table th {
+  background: rgba(102, 126, 234, 0.2);
+  padding: 12px;
+  text-align: left;
+  border-bottom: 2px solid rgba(102, 126, 234, 0.3);
+  color: #667eea;
+  font-weight: bold;
+}
+
+.stats-table td, .games-table td, .payments-table td {
+  padding: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stats-table tr:hover, .games-table tr:hover, .payments-table tr:hover {
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.status {
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.status.active {
+  background: rgba(81, 207, 102, 0.3);
+  color: #51cf66;
+}
+
+.status.completed {
+  background: rgba(81, 207, 102, 0.3);
+  color: #51cf66;
+}
+
+.status.pending {
+  background: rgba(255, 193, 7, 0.3);
+  color: #ffc107;
+}
+
+.status.pending_approval {
+  background: rgba(255, 193, 7, 0.3);
+  color: #ffc107;
+}
+
+.status.inactive {
+  background: rgba(255, 107, 107, 0.3);
+  color: #ff6b6b;
+}
+
+.edit-btn, .approve-btn, .reject-btn, .delete-btn {
+  padding: 5px 10px;
+  margin: 0 5px;
+  font-size: 0.8rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.edit-btn {
+  background: rgba(102, 126, 234, 0.5);
+  color: white;
+  border: 1px solid rgba(102, 126, 234, 0.8);
+}
+
+.edit-btn:hover {
+  background: rgba(102, 126, 234, 0.8);
+}
+
+.approve-btn {
+  background: rgba(81, 207, 102, 0.5);
+  color: white;
+  border: 1px solid rgba(81, 207, 102, 0.8);
+}
+
+.approve-btn:hover {
+  background: rgba(81, 207, 102, 0.8);
+}
+
+.reject-btn {
+  background: rgba(255, 107, 107, 0.5);
+  color: white;
+  border: 1px solid rgba(255, 107, 107, 0.8);
+}
+
+.reject-btn:hover {
+  background: rgba(255, 107, 107, 0.8);
+}
+
+.delete-btn {
+  background: rgba(255, 107, 107, 0.5);
+  color: white;
+  border: 1px solid rgba(255, 107, 107, 0.8);
+}
+
+.delete-btn:hover {
+  background: rgba(255, 107, 107, 0.8);
+}
+
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.analytics-card {
+  background: rgba(102, 126, 234, 0.15);
+  border: 2px solid rgba(102, 126, 234, 0.3);
+  border-radius: 10px;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.analytics-card:hover {
+  background: rgba(102, 126, 234, 0.25);
+  border-color: rgba(102, 126, 234, 0.8);
+  transform: translateY(-5px);
+}
+
+.analytics-card h3 {
+  color: #667eea;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+.analytics-card p {
+  color: rgba(255, 255, 255, 0.8);
+  margin: 8px 0;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-nav {
+    flex-direction: column;
+  }
+
+  .admin-nav button {
+    width: 100%;
+  }
+
+  .stats-table, .games-table, .payments-table {
+    font-size: 0.8rem;
+  }
+}
