@@ -9,17 +9,24 @@ function App() {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // Check for stored token on mount
     const storedToken = localStorage.getItem('token');
     const storedUser = localStorage.getItem('user');
     if (storedToken && storedUser) {
-      setToken(storedToken);
-      setUser(JSON.parse(storedUser));
-      // Check if admin
-      setIsAdmin(storedUser.includes('admin'));
+      try {
+        const parsedUser = JSON.parse(storedUser);
+        setToken(storedToken);
+        setUser(parsedUser);
+        // Check if admin
+        setIsAdmin(storedUser.toLowerCase().includes('admin') || parsedUser.email?.toLowerCase().includes('admin'));
+      } catch (e) {
+        console.error('Error parsing user:', e);
+      }
     }
+    setLoading(false);
   }, []);
 
   const handleLogout = () => {
@@ -28,7 +35,12 @@ function App() {
     setIsAdmin(false);
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    window.location.href = '/';
   };
+
+  if (loading) {
+    return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>Loading...</div>;
+  }
 
   return (
     <Router>
@@ -36,13 +48,13 @@ function App() {
         <Route
           path="/"
           element={
-            user ? <Navigate to="/player/dashboard" /> : <Login setUser={setUser} setToken={setToken} />
+            user ? <Navigate to={isAdmin ? "/admin" : "/player/dashboard"} /> : <Login setUser={setUser} setToken={setToken} setIsAdmin={setIsAdmin} />
           }
         />
         <Route
           path="/player/dashboard"
           element={
-            user ? (
+            user && !isAdmin ? (
               <PlayerDashboard user={user} token={token} onLogout={handleLogout} />
             ) : (
               <Navigate to="/" />
@@ -52,8 +64,10 @@ function App() {
         <Route
           path="/admin"
           element={
-            isAdmin || user?.email?.includes('admin') ? (
+            isAdmin ? (
               <AdminPanel token={token} onLogout={handleLogout} />
+            ) : user ? (
+              <Navigate to="/player/dashboard" />
             ) : (
               <Navigate to="/" />
             )

@@ -30,6 +30,20 @@
   font-size: 1.5rem;
 }
 
+.demo-info {
+  background: rgba(255, 193, 7, 0.2);
+  border: 2px solid #ffc107;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+}
+
+.demo-info p {
+  margin: 5px 0;
+  color: white;
+}
+
 .auth-card form {
   display: flex;
   flex-direction: column;

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/Auth.css';
 
-const Login = ({ setUser, setToken }) => {
+const Login = ({ setUser, setToken, setIsAdmin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLogin, setIsLogin] = useState(true);
@@ -28,9 +28,20 @@ const Login = ({ setUser, setToken }) => {
       if (response.data.success) {
         setToken(response.data.token);
         setUser(response.data.player);
+        
+        // Check if admin
+        const isAdminUser = email.toLowerCase().includes('admin');
+        setIsAdmin(isAdminUser);
+        
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('user', JSON.stringify(response.data.player));
-        navigate('/player/dashboard');
+        
+        // Redirect based on role
+        if (isAdminUser) {
+          navigate('/admin');
+        } else {
+          navigate('/player/dashboard');
+        }
       }
     } catch (err) {
       setError(err.response?.data?.error || 'An error occurred');
@@ -46,6 +57,12 @@ const Login = ({ setUser, setToken }) => {
         <h2>{isLogin ? 'Login' : 'Register'}</h2>
 
         {error && <div className="error-message">{error}</div>}
+
+        <div className="demo-info">
+          <p>Demo Admin Login:</p>
+          <p style={{fontSize: '0.9rem', color: '#ffc107'}}>Email: admin@example.com</p>
+          <p style={{fontSize: '0.9rem', color: '#ffc107'}}>Password: admin123</p>
+        </div>
 
         <form onSubmit={handleSubmit}>
           {!isLogin && (
