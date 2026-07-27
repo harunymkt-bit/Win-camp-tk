@@ -8,6 +8,8 @@ const authRoutes = require('./routes/authRoutes');
 const betRoutes = require('./routes/betRoutes');
 const paymentRoutes = require('./routes/paymentRoutes');
 const analyticsRoutes = require('./routes/analyticsRoutes');
+const adminGameRoutes = require('./routes/adminGameRoutes');
+const adminPaymentRoutes = require('./routes/adminPaymentRoutes');
 
 const app = express();
 
@@ -23,6 +25,10 @@ app.use('/api/wallet', walletRoutes);
 app.use('/api/bets', betRoutes);
 app.use('/api/payments', paymentRoutes);
 app.use('/api/analytics', analyticsRoutes);
+
+// Admin Routes
+app.use('/api/admin/games', adminGameRoutes);
+app.use('/api/admin/payments', adminPaymentRoutes);
 
 // Health check
 app.get('/health', (req, res) => {
@@ -42,7 +48,8 @@ app.get('/api/stats', (req, res) => {
       'Betting System',
       'Payment Processing',
       'Analytics & Statistics',
-      'RNG System'
+      'RNG System',
+      'Admin Panel'
     ]
   });
 });
@@ -52,7 +59,8 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`\n🎰 Casino Games Hosting Platform running on port ${PORT}`);
   console.log(`📊 API: http://localhost:${PORT}/api`);
-  console.log(`❤️  Health: http://localhost:${PORT}/health`);
+  console.log(`💚 Health: http://localhost:${PORT}/health`);
+  console.log(`⚙️  Admin API: http://localhost:${PORT}/api/admin`);
 });
 
 module.exports = app;

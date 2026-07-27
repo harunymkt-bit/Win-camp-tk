@@ -7,18 +7,76 @@
 .admin-header {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   padding: 30px;
-  text-align: center;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .admin-header h1 {
   font-size: 2rem;
-  margin-bottom: 10px;
+  margin: 0 0 10px 0;
 }
 
 .admin-header p {
   font-size: 1rem;
   opacity: 0.9;
+  margin: 0;
+}
+
+.logout-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid white;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.logout-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.success-message {
+  background: rgba(81, 207, 102, 0.2);
+  border: 2px solid #51cf66;
+  color: #51cf66;
+  padding: 15px 20px;
+  margin: 20px auto;
+  max-width: 1400px;
+  border-radius: 8px;
+  font-weight: bold;
+  animation: slideDown 0.3s ease;
+}
+
+.error-message {
+  background: rgba(255, 107, 107, 0.2);
+  border: 2px solid #ff6b6b;
+  color: #ff6b6b;
+  padding: 15px 20px;
+  margin: 20px auto;
+  max-width: 1400px;
+  border-radius: 8px;
+  font-weight: bold;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .admin-nav {
@@ -28,6 +86,8 @@
   padding: 20px;
   background: rgba(0, 0, 0, 0.2);
   flex-wrap: wrap;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .admin-nav button {
@@ -39,6 +99,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 1rem;
+  font-weight: 500;
 }
 
 .admin-nav button:hover {
@@ -50,6 +111,7 @@
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border-color: transparent;
   font-weight: bold;
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
 }
 
 .admin-content {
@@ -62,6 +124,127 @@
   font-size: 1.8rem;
   margin-bottom: 30px;
   color: #667eea;
+}
+
+.games-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.games-header h2 {
+  margin: 0;
+}
+
+.add-game-btn {
+  background: linear-gradient(135deg, #51cf66 0%, #37b24d 100%);
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.add-game-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(81, 207, 102, 0.4);
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: rgba(26, 26, 46, 0.95);
+  border-radius: 10px;
+  padding: 30px;
+  width: 100%;
+  max-width: 500px;
+  border: 2px solid rgba(102, 126, 234, 0.3);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.modal h2 {
+  margin-bottom: 20px;
+  color: #667eea;
+  text-align: center;
+}
+
+.modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.modal input,
+.modal select {
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 1rem;
+}
+
+.modal input::placeholder,
+.modal select {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.modal input:focus,
+.modal select:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(102, 126, 234, 0.8);
+}
+
+.modal button {
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.modal button[type="submit"] {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.modal button[type="submit"]:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.modal button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.cancel-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.6) !important;
 }
 
 .stats-grid {
@@ -94,7 +277,7 @@
 }
 
 .stat-value {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
   color: #667eea;
   margin: 0;
@@ -113,13 +296,17 @@
   color: #667eea;
 }
 
-.stats-table, .games-table, .payments-table {
+.stats-table,
+.games-table,
+.payments-table {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.9rem;
 }
 
-.stats-table th, .games-table th, .payments-table th {
+.stats-table th,
+.games-table th,
+.payments-table th {
   background: rgba(102, 126, 234, 0.2);
   padding: 12px;
   text-align: left;
@@ -128,12 +315,16 @@
   font-weight: bold;
 }
 
-.stats-table td, .games-table td, .payments-table td {
+.stats-table td,
+.games-table td,
+.payments-table td {
   padding: 12px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.stats-table tr:hover, .games-table tr:hover, .payments-table tr:hover {
+.stats-table tr:hover,
+.games-table tr:hover,
+.payments-table tr:hover {
   background: rgba(102, 126, 234, 0.1);
 }
 
@@ -143,11 +334,17 @@
   font-size: 0.8rem;
   font-weight: bold;
   text-transform: uppercase;
+  display: inline-block;
 }
 
 .status.active {
   background: rgba(81, 207, 102, 0.3);
   color: #51cf66;
+}
+
+.status.inactive {
+  background: rgba(255, 107, 107, 0.3);
+  color: #ff6b6b;
 }
 
 .status.completed {
@@ -165,28 +362,30 @@
   color: #ffc107;
 }
 
-.status.inactive {
-  background: rgba(255, 107, 107, 0.3);
-  color: #ff6b6b;
-}
-
-.edit-btn, .approve-btn, .reject-btn, .delete-btn {
-  padding: 5px 10px;
-  margin: 0 5px;
+.toggle-btn,
+.approve-btn,
+.reject-btn,
+.delete-btn {
+  padding: 8px 12px;
+  margin: 0 5px 5px 0;
   font-size: 0.8rem;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease;
+  border: none;
+  font-weight: bold;
+  display: inline-block;
 }
 
-.edit-btn {
+.toggle-btn {
   background: rgba(102, 126, 234, 0.5);
   color: white;
   border: 1px solid rgba(102, 126, 234, 0.8);
 }
 
-.edit-btn:hover {
+.toggle-btn:hover:not(:disabled) {
   background: rgba(102, 126, 234, 0.8);
+  transform: translateY(-2px);
 }
 
 .approve-btn {
@@ -195,8 +394,9 @@
   border: 1px solid rgba(81, 207, 102, 0.8);
 }
 
-.approve-btn:hover {
+.approve-btn:hover:not(:disabled) {
   background: rgba(81, 207, 102, 0.8);
+  transform: translateY(-2px);
 }
 
 .reject-btn {
@@ -205,8 +405,9 @@
   border: 1px solid rgba(255, 107, 107, 0.8);
 }
 
-.reject-btn:hover {
+.reject-btn:hover:not(:disabled) {
   background: rgba(255, 107, 107, 0.8);
+  transform: translateY(-2px);
 }
 
 .delete-btn {
@@ -215,40 +416,43 @@
   border: 1px solid rgba(255, 107, 107, 0.8);
 }
 
-.delete-btn:hover {
+.delete-btn:hover:not(:disabled) {
   background: rgba(255, 107, 107, 0.8);
+  transform: translateY(-2px);
 }
 
-.analytics-grid {
+.delete-btn:disabled,
+.toggle-btn:disabled,
+.approve-btn:disabled,
+.reject-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.payments-sections {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
 
-.analytics-card {
-  background: rgba(102, 126, 234, 0.15);
-  border: 2px solid rgba(102, 126, 234, 0.3);
+.payment-section {
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 10px;
   padding: 20px;
-  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow-x: auto;
 }
 
-.analytics-card:hover {
-  background: rgba(102, 126, 234, 0.25);
-  border-color: rgba(102, 126, 234, 0.8);
-  transform: translateY(-5px);
-}
-
-.analytics-card h3 {
+.payment-section h3 {
+  margin-top: 0;
   color: #667eea;
   margin-bottom: 15px;
-  font-size: 1.1rem;
 }
 
-.analytics-card p {
-  color: rgba(255, 255, 255, 0.8);
-  margin: 8px 0;
-  font-size: 0.95rem;
+@media (max-width: 1024px) {
+  .payments-sections {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 768px) {
@@ -264,7 +468,18 @@
     width: 100%;
   }
 
-  .stats-table, .games-table, .payments-table {
+  .stats-table,
+  .games-table,
+  .payments-table {
     font-size: 0.8rem;
+  }
+
+  .toggle-btn,
+  .approve-btn,
+  .reject-btn,
+  .delete-btn {
+    padding: 6px 10px;
+    font-size: 0.7rem;
+    margin: 0 3px 3px 0;
   }
 }
